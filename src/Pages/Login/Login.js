@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import login from "./../../assets/images/login/login.svg";
 
 const Login = () => {
@@ -48,6 +49,12 @@ const Login = () => {
                 />
               </div>
             </form>
+            <p className="text-center pb-10">
+              New to car Docter .?{""}
+              <Link className="text-orange-600 font-bold" to="/signup">
+                Sign Up
+              </Link>
+            </p>
           </div>
         </div>
       </div>

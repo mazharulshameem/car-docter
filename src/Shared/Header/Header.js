@@ -3,9 +3,16 @@ import { Link } from "react-router-dom";
 import logo from "./../../assets/logo.svg";
 
 const Header = () => {
-  const menuItems = <>
-  <li><Link to ="/">Home</Link></li>
-  </>
+  const menuItems = (
+    <>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/signup">Sign Up</Link>
+      </li>
+    </>
+  );
   return (
     <div>
       <div className="navbar h-15 mb-2 bg-teal-400">
@@ -31,7 +38,7 @@ const Header = () => {
               tabIndex={0}
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
-            {menuItems}
+              {menuItems}
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
@@ -39,9 +46,7 @@ const Header = () => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
-           {menuItems}
-          </ul>
+          <ul className="menu menu-horizontal p-0">{menuItems}</ul>
         </div>
         <div className="navbar-end">
           <button className="btn btn-outline btn-error">Get Started</button>
