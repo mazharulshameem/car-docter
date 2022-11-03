@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Contextss/UserContexts";
 import img from "./../../assets/images/login/login.svg";
 
 const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
   const handleRegister = (event) => {
     event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    // console.log(name, email, password);
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        event.target.reset();
+      })
+      .catch((err) => console.error(err));
   };
-
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content gap-10 flex-col  lg:flex-row">
@@ -23,8 +34,9 @@ const SignUp = () => {
                 <span className="label-text">Name</span>
               </label>
               <input
+                name="name"
                 type="text"
-                placeholder=" Enter Name"
+                placeholder="Enter Name"
                 className="input input-bordered"
               />
             </div>
@@ -33,9 +45,11 @@ const SignUp = () => {
                 <span className="label-text">Email</span>
               </label>
               <input
+                name="email"
                 type="email"
                 placeholder=" Enter Email"
                 className="input input-bordered"
+                required
               />
             </div>
             <div className="form-control">
@@ -43,8 +57,9 @@ const SignUp = () => {
                 <span className="label-text">Password</span>
               </label>
               <input
-                type="text"
-                placeholder="password"
+                name="password"
+                type="password"
+                placeholder="Password"
                 className="input input-bordered"
               />
             </div>
